@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google" content="notranslate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- Security: restrict what the page is allowed to load -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; media-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <title>Juli Soul — Waking Scarhome</title>
+  <meta name="description" content="Juli Soul — listen everywhere." />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- ⚠️ ЗАМІНИ домен нижче на реальну адресу її сайту після деплою на Cloudflare Pages
+       (напр. https://juli-soul.pages.dev/). Це для canonical + прев'ю при шерингу. -->
+  <link rel="canonical" href="https://juli-soul.pages.dev/" />
+  <meta property="og:type" content="music.song" />
+  <meta property="og:url" content="https://juli-soul.pages.dev/" />
+  <meta property="og:title" content="Juli Soul — Waking Scarhome" />
+  <meta property="og:description" content="Listen everywhere — Spotify · Apple Music · YouTube Music." />
+  <meta property="og:image" content="https://juli-soul.pages.dev/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Waking Scarhome — cover art" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Juli Soul — Waking Scarhome" />
+  <meta name="twitter:description" content="Listen everywhere — Spotify · Apple Music · YouTube Music." />
+  <meta name="twitter:image" content="https://juli-soul.pages.dev/assets/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inclusive+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="loading">
+
+  <!-- ONE continuous clip per device: needle-drop intro then a spinning loop. The loop
+       repeats by seeking the tail back past the intro — a single element, so two videos
+       can never be on screen at once. Poster set per-device by script.js. -->
+  <video id="bgvid" class="bgvid" muted playsinline webkit-playsinline preload="auto"
+         disablepictureinpicture disableremoteplayback x5-playsinline x5-video-player-type="h5"
+         tabindex="-1" aria-hidden="true"></video>
+  <div class="vignette"></div>
+
+  <main class="overlay">
+    <header class="brand">
+      <span class="brand-name" id="brandName"></span>
+      <span class="brand-sub" id="tagline"></span>
+    </header>
+
+    <section class="panel">
+      <p class="eyebrow">Listen on</p>
+      <div id="links"></div>
+      <div class="more" id="more"></div>
+      <button class="show-more" id="showMore" type="button" aria-expanded="false" aria-controls="more">
+        <span class="sm-label">Show more</span>
+        <span class="sm-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div class="socials" id="socials"></div>
+    </section>
+  </main>
+
+  <!-- shown when the visitor goes offline / on connection error -->
+  <div id="offline" role="status" aria-live="polite" aria-hidden="true">
+    <div class="err">
+      <span class="err-404" aria-hidden="true">404</span>
+      <p class="err-msg">You're offline — reconnect to listen</p>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
